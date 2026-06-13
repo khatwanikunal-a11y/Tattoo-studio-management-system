@@ -60,3 +60,44 @@
       </form>
     </div>
   </div>
+
+  <!-- Edit Artist Modal -->
+  <div id="edit-artist-modal" class="modal-overlay" onclick="if(event.target===this)closeModal('edit-artist-modal')">
+    <div class="modal">
+      <h2>Edit Artist</h2>
+      <p id="edit-artist-error" class="error-msg"></p>
+      <form onsubmit="handleEditArtist(event)" novalidate>
+        <input type="hidden" id="edit-artist-id" />
+        <div class="form-group">
+          <label for="edit-artist-name">Name *</label>
+          <input type="text" id="edit-artist-name" required maxlength="100" />
+        </div>
+        <div class="form-group">
+          <label for="edit-artist-speciality">Speciality *</label>
+          <input type="text" id="edit-artist-speciality" required maxlength="100" />
+        </div>
+        <div class="form-group">
+          <label for="edit-artist-exp">Years of Experience *</label>
+          <input type="number" id="edit-artist-exp" required min="0" max="60" />
+        </div>
+        <div class="form-group">
+          <label for="edit-artist-bio">Bio</label>
+          <textarea id="edit-artist-bio" maxlength="500" rows="3"></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-ghost" onclick="closeModal('edit-artist-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2026 Tattoo Studio Management System</p>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/artists.js"></script>
+</body>
+</html>
