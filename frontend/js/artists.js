@@ -55,3 +55,49 @@ async function searchArtists() {
     '</div>';
   }).join('');
 }
+
+async function handleAddArtist(e) {
+  e.preventDefault();
+  if (!requireAuth()) return;
+  const btn = document.getElementById('add-artist-btn');
+  const errEl = document.getElementById('artist-form-error');
+  errEl.textContent = '';
+  btn.disabled = true; btn.textContent = 'Saving\u2026';
+  const body = {
+    name: document.getElementById('artist-name').value,
+    speciality: document.getElementById('artist-speciality').value,
+    bio: document.getElementById('artist-bio').value,
+    years_exp: parseInt(document.getElementById('artist-exp').value)
+  };
+  const result = await apiFetch('/artists', { method: 'POST', body: JSON.stringify(body) });
+  if (result.status === 201) {
+    showToast('Artist added successfully!');
+    closeModal('artist-modal');
+    document.getElementById('add-artist-form').reset();
+    loadArtists();
+  } else {
+    errEl.textContent = result.data.error || 'Failed to add artist';
+  }
+  btn.disabled = false; btn.textContent = 'Add Artist';
+}
+
+async function handleEditArtist(e) {
+  e.preventDefault();
+  const id = document.getElementById('edit-artist-id').value;
+  const errEl = document.getElementById('edit-artist-error');
+  errEl.textContent = '';
+  const body = {
+    name: document.getElementById('edit-artist-name').value,
+    speciality: document.getElementById('edit-artist-speciality').value,
+    bio: document.getElementById('edit-artist-bio').value,
+    years_exp: parseInt(document.getElementById('edit-artist-exp').value)
+  };
+  const result = await apiFetch('/artists/' + id, { method: 'PUT', body: JSON.stringify(body) });
+  if (result.status === 200) {
+    showToast('Artist updated!');
+    closeModal('edit-artist-modal');
+    loadArtists();
+  } else {
+    errEl.textContent = result.data.error || 'Update failed';
+  }
+}
