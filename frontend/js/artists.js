@@ -101,3 +101,30 @@ async function handleEditArtist(e) {
     errEl.textContent = result.data.error || 'Update failed';
   }
 }
+
+async function deleteArtist(id) {
+  if (!confirm('Delete this artist? This cannot be undone.')) return;
+  const result = await apiFetch('/artists/' + id, { method: 'DELETE' });
+  if (result.status === 200) { showToast('Artist deleted'); loadArtists(); }
+  else showToast(result.data.error || 'Delete failed', 'error');
+}
+
+function openModal(id) { document.getElementById(id).classList.add('active'); }
+function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+function openEditArtist(id, name, speciality, years_exp, bio) {
+  document.getElementById('edit-artist-id').value = id;
+  document.getElementById('edit-artist-name').value = name;
+  document.getElementById('edit-artist-speciality').value = speciality;
+  document.getElementById('edit-artist-exp').value = years_exp;
+  document.getElementById('edit-artist-bio').value = bio;
+  openModal('edit-artist-modal');
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  updateNavAuth();
+  loadArtists();
+  document.getElementById('search-input').addEventListener('keyup', function(e) {
+    if (e.key === 'Enter') searchArtists();
+  });
+});
