@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login &#8211; Tattoo Studio Management System</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="nav-brand">&#128396; Tattoo Studio Management System</a>
+    <div class="nav-links">
+      <a href="/artists.html">Artists</a>
+      <a href="/designs.html">Designs</a>
+    </div>
+    <div id="nav-auth"></div>
+  </nav>
+
+  <main class="auth-page">
+    <div class="auth-card">
+      <h1>Welcome Back</h1>
+      <p class="auth-sub">Sign in to your account</p>
+      <p id="auth-error" class="error-msg"></p>
+      <form onsubmit="handleLogin(event)" novalidate>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" required autocomplete="email" placeholder="you@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required minlength="8" autocomplete="current-password" placeholder="&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;" />
+        </div>
+        <button type="submit" id="login-btn" class="btn btn-primary btn-full">Login</button>
+      </form>
+      <p class="auth-switch">No account? <a href="/register.html">Register here</a></p>
+    </div>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script>updateNavAuth();</script>
+</body>
+</html>
