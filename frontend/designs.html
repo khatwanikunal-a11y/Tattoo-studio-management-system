@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Designs &#8211; Tattoo Studio Management System</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="nav-brand">&#128396; Tattoo Studio Management System</a>
+    <div class="nav-links">
+      <a href="/artists.html">Artists</a>
+      <a href="/designs.html" class="active">Designs</a>
+    </div>
+    <div id="nav-auth"></div>
+  </nav>
+
+  <main class="page-main">
+    <div class="page-header">
+      <h1>Tattoo Designs</h1>
+      <button class="btn btn-primary" onclick="if(requireAuth())openModal('design-modal')">+ Add Design</button>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search by title or style&#x2026;" />
+      <button class="btn btn-outline" onclick="searchDesigns()">Search</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('search-input').value='';loadDesigns()">Clear</button>
+      <select id="currency-select" class="select-input">
+        <option value="EUR">EUR &#8364;</option>
+        <option value="GBP">GBP &#163;</option>
+        <option value="USD">USD &#36;</option>
+        <option value="INR">INR &#8377;</option>
+        <option value="CAD">CAD &#36;</option>
+        <option value="AUD">AUD &#36;</option>
+      </select>
+    </div>
+
+    <div id="price-result" class="price-banner" style="display:none"></div>
+    <div id="designs-grid" class="card-grid"></div>
+  </main>
