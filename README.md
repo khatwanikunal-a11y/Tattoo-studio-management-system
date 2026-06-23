@@ -2,12 +2,23 @@
 
 A full-stack MERN-style web application for managing tattoo artists, designs, and pricing.
 
+## Live Deployment
+
+| Resource | URL |
+|----------|-----|
+| **Live Application** | http://Tattoo-Studio-Management-System-env.eba-z26hzwgc.eu-north-1.elasticbeanstalk.com |
+| **API Base URL** | http://Tattoo-Studio-Management-System-env.eba-z26hzwgc.eu-north-1.elasticbeanstalk.com/api |
+| **Platform** | AWS Elastic Beanstalk — Europe (Stockholm) `eu-north-1` |
+| **Runtime** | Node.js 22 on 64-bit Amazon Linux 2023 |
+| **Environment name** | Tattoo-Studio-Management-System-env |
+
 ## Tech Stack
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB (Mongoose ODM)
 - **Auth**: JWT + bcryptjs (password hashing)
 - **Security**: Helmet, express-rate-limit, express-validator
 - **Frontend**: Vanilla HTML / CSS / JavaScript
+- **Hosting**: AWS Elastic Beanstalk
 
 ## Project Structure
 
