@@ -22,7 +22,7 @@ A full-stack MERN-style web application for managing tattoo artists, designs and
 ## Project Structure
 
 ```
-the-ink-factory/
+Tattoo Studio Management System/
 ├── backend/
 │   ├── config/db.js              – MongoDB connection
 │   ├── middleware/
